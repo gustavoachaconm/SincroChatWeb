@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+---
+
+<BaseLayout
+  title="Blog Sincro Chat – Recursos sobre pedidos por WhatsApp para negocios"
+  description="Artículos, guías y consejos sobre cómo gestionar y automatizar pedidos por WhatsApp. Para restaurantes y negocios que quieren vender más."
+>
+  <Header />
+
+  <main>
+
+    <!-- ── Hero ── -->
+    <section class="bg-[--color-surface-alt] py-10 md:py-14 text-center">
+      <div class="container">
+        <h1 class="text-4xl md:text-5xl font-bold text-[--color-text] max-w-xl mx-auto leading-tight">
+          Blog Sincro Chat
+        </h1>
+        <p class="mt-4 text-lg text-[--color-text-muted] max-w-lg mx-auto">
+          Recursos, guías y consejos para negocios que reciben pedidos por WhatsApp.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── Posts ── -->
+    <section class="py-10 md:py-14">
+      <div class="container">
+        {posts.length === 0 ? (
+          <div class="text-center py-20">
+            <p class="text-4xl mb-4" aria-hidden="true">✍️</p>
+            <h2 class="text-2xl font-bold text-[--color-text] mb-2">Próximamente</h2>
+            <p class="text-[--color-text-muted] max-w-sm mx-auto">
+              Estamos preparando artículos sobre automatización de pedidos, WhatsApp Business y cómo crecer tu negocio. Vuelve pronto.
+            </p>
+            <a
+              href="/"
+              class="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-xl font-semibold border-2 border-[--color-primary] text-[--color-primary] hover:bg-[--color-primary] hover:text-white transition-colors"
+            >
+              ← Volver al inicio
+            </a>
+          </div>
+        ) : (
+          <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {posts.map((post) => (
+              <li>
+                <a
+                  href={`/blog/${post.id}`}
+                  class="flex flex-col h-full p-6 rounded-2xl border border-[--color-border] bg-white shadow-sm hover:shadow-md hover:border-[--color-primary] transition-all group"
+                >
+                  <div class="flex flex-wrap gap-2 mb-3">
+                    {post.data.tags.map((tag: string) => (
+                      <span class="px-2 py-0.5 rounded-full text-xs font-medium text-[--color-primary-dark] bg-[--color-primary-light]">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <h2 class="text-lg font-bold text-[--color-text] mb-2 group-hover:text-[--color-primary] transition-colors">
+                    {post.data.title}
+                  </h2>
+                  <p class="text-sm text-[--color-text-muted] leading-relaxed flex-1">
+                    {post.data.description}
+                  </p>
+                  <time
+                    datetime={post.data.pubDate.toISOString()}
+                    class="mt-4 text-xs text-[--color-text-muted]"
+                  >
+                    {new Intl.DateTimeFormat('es-CO', { dateStyle: 'long' }).format(post.data.pubDate)}
+                  </time>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>

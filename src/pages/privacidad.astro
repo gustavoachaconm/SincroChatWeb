@@ -1,0 +1,471 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+
+const sections = [
+  { id: 'resumen',    num: '—', title: 'Resumen de puntos clave' },
+  { id: 'seccion-1',  num: '1',  title: 'Información que recopilamos' },
+  { id: 'seccion-2',  num: '2',  title: 'Cómo usamos su información' },
+  { id: 'seccion-3',  num: '3',  title: 'Cuándo y con quién compartimos' },
+  { id: 'seccion-4',  num: '4',  title: 'Cookies y tecnologías de rastreo' },
+  { id: 'seccion-5',  num: '5',  title: 'Retención de datos' },
+  { id: 'seccion-6',  num: '6',  title: 'Seguridad de la información' },
+  { id: 'seccion-7',  num: '7',  title: 'Menores de edad' },
+  { id: 'seccion-8',  num: '8',  title: 'Derechos del titular' },
+  { id: 'seccion-9',  num: '9',  title: 'Señales de no rastreo' },
+  { id: 'seccion-10', num: '10', title: 'Actualizaciones a esta política' },
+  { id: 'seccion-11', num: '11', title: 'Contacto sobre esta política' },
+  { id: 'seccion-12', num: '12', title: 'Revisión, actualización o eliminación' },
+];
+---
+
+<BaseLayout
+  title="Política de Privacidad – Sincro Chat"
+  description="Política de Privacidad y Tratamiento de Datos Personales de Sincro Chat. Versión 1.0, vigente desde el 26 de febrero de 2026. Cumplimiento Ley 1581 de 2012."
+>
+  <Header />
+
+  <main>
+
+    <!-- ── Hero ── -->
+    <section class="bg-[--color-surface-alt] border-b border-[--color-border] py-10 md:py-14">
+      <div class="container">
+        <div class="max-w-3xl">
+          <p class="text-xs font-bold uppercase tracking-widest mb-3 text-[--color-text-muted]">Documento legal</p>
+          <h1 class="text-3xl md:text-4xl font-bold text-[--color-text] leading-tight mb-4">
+            Política de Privacidad y Tratamiento de Datos Personales
+          </h1>
+          <div class="flex flex-wrap items-center gap-4 text-sm text-[--color-text-muted]">
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Última actualización: 26 de febrero de 2026
+            </span>
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Versión 1.0
+            </span>
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Ley 1581 de 2012 · Colombia
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Contenido ── -->
+    <section class="py-10 md:py-16">
+      <div class="container">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-10 items-start">
+
+          <!-- Tabla de contenido (sticky en desktop) -->
+          <aside class="lg:col-span-1 lg:sticky lg:top-24">
+            <div class="rounded-2xl border border-[--color-border] bg-white shadow-sm overflow-hidden">
+              <div class="px-5 py-4 border-b border-[--color-border]" style="background:var(--color-surface-alt)">
+                <p class="text-xs font-bold uppercase tracking-widest text-[--color-text-muted]">Tabla de contenido</p>
+              </div>
+              <nav aria-label="Secciones del documento">
+                <ol class="py-2">
+                  {sections.map(({ id, num, title }) => (
+                    <li>
+                      <a
+                        href={`#${id}`}
+                        class="flex items-start gap-2.5 px-5 py-2 text-xs text-[--color-text-muted] hover:text-[--color-primary] hover:bg-[--color-surface-alt] transition-colors"
+                      >
+                        <span class="font-bold shrink-0 mt-0.5" style="color:var(--color-primary)">{num}</span>
+                        <span class="leading-snug">{title}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            </div>
+          </aside>
+
+          <!-- Contenido del documento -->
+          <article class="lg:col-span-3 space-y-10">
+
+            <!-- Intro -->
+            <div class="prose-legal">
+              <p><strong>Sincro Systems</strong>, operador de Sincro Chat (en adelante "Sincro", "nosotros" o "el Prestador"), con domicilio en Av29 #14-216, Cúcuta, Norte de Santander, Colombia, es responsable del tratamiento de los datos personales que recopila a través de sus Servicios.</p>
+              <p>Esta Política describe cómo recopilamos, almacenamos, usamos y protegemos la información personal de nuestros Clientes cuando usan la plataforma Sincro Chat, incluyendo la integración con WhatsApp Business API. Se adopta en cumplimiento de la <strong>Ley Estatutaria 1581 de 2012</strong> y el <strong>Decreto 1377 de 2013</strong>.</p>
+              <p>Si tiene preguntas, contáctenos en <a href="mailto:privacidad@sincro.chat">privacidad@sincro.chat</a>.</p>
+            </div>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Resumen -->
+            <section id="resumen" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style="background:var(--color-primary-light)">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" style="color:var(--color-primary-dark)"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                </span>
+                <h2 class="text-xl font-bold text-[--color-text]">Resumen de puntos clave</h2>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  {
+                    q: '¿Qué información recopilamos?',
+                    a: 'Información que usted nos proporciona al registrarse y usar la app, y datos técnicos generados automáticamente.',
+                    link: '#seccion-1',
+                    linkText: 'Ver Sección 1',
+                  },
+                  {
+                    q: '¿Procesamos información sensible?',
+                    a: 'No. No recopilamos datos de categorías especiales como origen racial, orientación sexual, creencias religiosas ni datos de salud.',
+                    link: null,
+                    linkText: null,
+                  },
+                  {
+                    q: '¿Compartimos datos con terceros?',
+                    a: 'Solo en los casos estrictamente necesarios (proveedores técnicos esenciales y cumplimiento legal). No vendemos datos.',
+                    link: '#seccion-3',
+                    linkText: 'Ver Sección 3',
+                  },
+                  {
+                    q: '¿Cuáles son sus derechos?',
+                    a: 'Tiene derecho a conocer, actualizar, rectificar, suprimir su información y revocar el consentimiento.',
+                    link: '#seccion-8',
+                    linkText: 'Ver Sección 8',
+                  },
+                  {
+                    q: '¿Cómo ejercer sus derechos?',
+                    a: 'Enviando una solicitud a privacidad@sincro.chat. Atenderemos su solicitud conforme a la ley colombiana.',
+                    link: '#seccion-8',
+                    linkText: 'Ver Sección 8',
+                  },
+                ].map(({ q, a, link, linkText }) => (
+                  <div class="p-5 rounded-xl border border-[--color-border] bg-white shadow-sm">
+                    <p class="text-xs font-bold text-[--color-text] mb-2">{q}</p>
+                    <p class="text-xs text-[--color-text-muted] leading-relaxed">{a}{' '}
+                      {link && <a href={link} class="font-semibold underline" style="color:var(--color-primary)">{linkText} →</a>}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 1 -->
+            <section id="seccion-1" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">1</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Información que recopilamos</h2>
+              </div>
+              <div class="prose-legal space-y-5">
+                <div>
+                  <h3>1.1 Información proporcionada por el Cliente</h3>
+                  <p>Al registrarse y usar la plataforma, recopilamos:</p>
+                  <ul>
+                    <li>Nombre completo o razón social del negocio.</li>
+                    <li>Correo electrónico de contacto.</li>
+                    <li>Número de teléfono y número de WhatsApp Business.</li>
+                    <li>Nombre de usuario y contraseña de acceso a la plataforma.</li>
+                    <li>Información del catálogo de productos o servicios (nombre, descripción, precios, imágenes).</li>
+                    <li>Mensajes y conversaciones procesadas a través de la plataforma.</li>
+                    <li>Información de configuración del negocio (horarios, zona de cobertura, métodos de pago).</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3>1.2 Datos de la aplicación móvil</h3>
+                  <p>Al usar la aplicación Sincro Chat, podemos recopilar automáticamente:</p>
+                  <ul>
+                    <li>Identificador del dispositivo (ID, modelo y fabricante).</li>
+                    <li>Sistema operativo y versión.</li>
+                    <li>Versión de la aplicación instalada.</li>
+                    <li>Dirección IP del dispositivo.</li>
+                    <li>Información sobre el uso de funciones específicas de la aplicación.</li>
+                  </ul>
+                  <p>Para el correcto funcionamiento, podemos solicitar acceso a:</p>
+                  <ul>
+                    <li><strong>Almacenamiento:</strong> para guardar imágenes del catálogo y archivos relacionados con la operación.</li>
+                    <li><strong>Galería de fotos:</strong> para cargar imágenes de productos o del negocio.</li>
+                    <li><strong>Cámara:</strong> para capturar imágenes directamente desde la aplicación.</li>
+                    <li><strong>Notificaciones push:</strong> para enviar alertas de nuevos pedidos y actualizaciones en tiempo real.</li>
+                  </ul>
+                  <p>Puede gestionar o revocar estos permisos en cualquier momento desde la configuración de su dispositivo.</p>
+                </div>
+                <div>
+                  <h3>1.3 Datos de compradores finales</h3>
+                  <p>Sincro Chat puede procesar datos de los compradores finales de nuestros Clientes (nombre, número de teléfono, dirección de entrega, historial de pedidos). En este caso, el Cliente actúa como <strong>responsable del tratamiento</strong> y Sincro como <strong>encargado del tratamiento</strong>. El Cliente declara contar con las autorizaciones necesarias de sus compradores finales para el tratamiento de sus datos dentro de la plataforma.</p>
+                </div>
+                <div>
+                  <h3>1.4 Información que NO recopilamos</h3>
+                  <p>Sincro Chat <strong>no</strong> recopila ni procesa:</p>
+                  <ul>
+                    <li>Datos sensibles: origen racial o étnico, orientación sexual, creencias religiosas o políticas, datos de salud.</li>
+                    <li>Información de menores de 18 años de manera intencional.</li>
+                    <li>Datos de tarjetas de crédito, débito ni información bancaria de los compradores finales.</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 2 -->
+            <section id="seccion-2" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">2</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Cómo usamos su información</h2>
+              </div>
+              <div class="prose-legal">
+                <p>Usamos la información recopilada exclusivamente para:</p>
+                <ul>
+                  <li><strong>Prestación del servicio:</strong> para operar la plataforma, gestionar pedidos y habilitar las funciones contratadas.</li>
+                  <li><strong>Gestión de cuentas:</strong> para crear, autenticar y mantener la cuenta del Cliente.</li>
+                  <li><strong>Comunicaciones del servicio:</strong> para enviar notificaciones sobre pedidos, liquidaciones, cambios en los T&amp;C y avisos técnicos.</li>
+                  <li><strong>Soporte técnico:</strong> para atender consultas, solucionar problemas y mejorar la experiencia de uso.</li>
+                  <li><strong>Liquidación de comisiones:</strong> para calcular, reportar y cobrar las comisiones según lo acordado.</li>
+                  <li><strong>Seguridad y prevención de fraude:</strong> para proteger la integridad de la plataforma y de las cuentas.</li>
+                  <li><strong>Mejora de los Servicios:</strong> para analizar patrones de uso y mejorar las funcionalidades de la plataforma.</li>
+                  <li><strong>Cumplimiento legal:</strong> para atender requerimientos de autoridades competentes conforme a la ley colombiana.</li>
+                </ul>
+                <p>No usamos su información para publicidad dirigida a terceros ni la cedemos con fines comerciales a otras empresas.</p>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 3 -->
+            <section id="seccion-3" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">3</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Cuándo y con quién compartimos su información</h2>
+              </div>
+              <div class="prose-legal">
+                <p>Sincro Chat no vende ni arrienda datos personales. Podemos compartir información únicamente en los siguientes casos:</p>
+                <ul>
+                  <li><strong>Proveedores técnicos esenciales:</strong> compartimos datos con terceros que nos ayudan a operar la plataforma, como Meta Platforms (WhatsApp Business API) y proveedores de alojamiento. Están obligados contractualmente a no usar los datos para fines propios.</li>
+                  <li><strong>Cumplimiento legal:</strong> podemos divulgar información cuando sea requerido por ley, orden judicial o autoridad competente colombiana.</li>
+                  <li><strong>Transferencia del negocio:</strong> en caso de fusión, adquisición o venta de activos, los datos podrán ser transferidos al nuevo operador, quien quedará sujeto a esta misma Política.</li>
+                </ul>
+                <p>En ningún caso compartimos datos con fines publicitarios ni con empresas que no tengan relación directa con la operación del servicio.</p>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 4 -->
+            <section id="seccion-4" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">4</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Cookies y tecnologías de rastreo</h2>
+              </div>
+              <div class="prose-legal">
+                <p>La aplicación móvil Sincro Chat no utiliza cookies de rastreo publicitario. Sin embargo, podemos usar tecnologías similares con los siguientes propósitos estrictamente técnicos:</p>
+                <ul>
+                  <li>Mantener la sesión activa del usuario autenticado.</li>
+                  <li>Almacenar preferencias de configuración de la app.</li>
+                  <li>Recopilar datos de diagnóstico para detectar y corregir errores técnicos.</li>
+                  <li>Medir el rendimiento y estabilidad de la aplicación.</li>
+                </ul>
+                <p>Estos datos de diagnóstico son anonimizados y no se usan para identificar usuarios individualmente con fines comerciales.</p>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 5 -->
+            <section id="seccion-5" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">5</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Retención de datos</h2>
+              </div>
+              <div class="prose-legal">
+                <p>Conservamos su información personal durante el tiempo que su cuenta esté activa y mientras sea necesario para cumplir los fines descritos en esta política. Una vez terminada la relación contractual:</p>
+                <ul>
+                  <li>Los datos operativos (pedidos, liquidaciones) se conservan por un mínimo de <strong>cinco (5) años</strong> para efectos contables y legales, conforme a la legislación colombiana.</li>
+                  <li>Los datos de acceso y configuración de la cuenta se eliminan o anonimizan dentro de los <strong>treinta (30) días</strong> siguientes a la terminación del contrato, salvo que la ley exija un período mayor.</li>
+                </ul>
+                <p>Cuando no exista una necesidad legítima de continuar el tratamiento, procederemos a eliminar o anonimizar la información de manera segura.</p>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 6 -->
+            <section id="seccion-6" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">6</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Seguridad de la información</h2>
+              </div>
+              <div class="prose-legal">
+                <p>Implementamos medidas técnicas y organizacionales razonables para proteger su información personal, que incluyen:</p>
+                <ul>
+                  <li>Transmisión de datos mediante cifrado (HTTPS/TLS).</li>
+                  <li>Control de acceso con autenticación para el personal interno.</li>
+                  <li>Monitoreo de seguridad de nuestra infraestructura.</li>
+                  <li>Copias de seguridad periódicas de la información.</li>
+                </ul>
+                <p>No podemos garantizar que actores externos no autorizados no puedan vulnerar nuestras medidas de seguridad. En caso de una brecha de seguridad que afecte sus datos, le notificaremos conforme a lo establecido por la ley colombiana y las instrucciones de la Superintendencia de Industria y Comercio (SIC).</p>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 7 -->
+            <section id="seccion-7" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">7</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Menores de edad</h2>
+              </div>
+              <div class="prose-legal">
+                <p>Los Servicios de Sincro Chat están dirigidos exclusivamente a personas mayores de 18 años con capacidad legal para contratar en representación de un negocio. No recopilamos ni procesamos intencionalmente datos personales de menores de edad.</p>
+                <p>Si tenemos conocimiento de que hemos recopilado datos de un menor de edad, procederemos a eliminar dicha información de nuestros registros. Si usted tiene conocimiento de una situación de este tipo, notifíquenos en <a href="mailto:privacidad@sincro.chat">privacidad@sincro.chat</a>.</p>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 8 -->
+            <section id="seccion-8" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">8</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Derechos del titular de los datos</h2>
+              </div>
+              <div class="prose-legal space-y-5">
+                <div>
+                  <p>De conformidad con la <strong>Ley 1581 de 2012</strong>, como titular de sus datos personales usted tiene los siguientes derechos:</p>
+                  <ul>
+                    <li><strong>Conocer:</strong> solicitar información sobre los datos que tenemos sobre usted y cómo los tratamos.</li>
+                    <li><strong>Actualizar y rectificar:</strong> solicitar la corrección de datos inexactos o incompletos.</li>
+                    <li><strong>Suprimir:</strong> solicitar la eliminación de sus datos cuando no exista obligación legal de conservarlos.</li>
+                    <li><strong>Revocar el consentimiento:</strong> retirar el consentimiento otorgado para el tratamiento, sin efecto retroactivo.</li>
+                    <li><strong>Acceder gratuitamente:</strong> conocer sus datos personales sin costo al menos una vez al mes.</li>
+                    <li><strong>Presentar quejas:</strong> ante la Superintendencia de Industria y Comercio (SIC) si considera que sus derechos han sido vulnerados.</li>
+                  </ul>
+                </div>
+                <div class="p-5 rounded-xl border border-[--color-border] bg-[--color-surface-alt]">
+                  <p class="font-bold text-[--color-text] text-sm mb-3">¿Cómo ejercer sus derechos?</p>
+                  <p class="text-sm text-[--color-text-muted] leading-relaxed">Envíe su solicitud a <a href="mailto:privacidad@sincro.chat" class="font-semibold underline" style="color:var(--color-primary)">privacidad@sincro.chat</a> indicando: (1) su nombre completo e identificación, (2) el derecho que desea ejercer y (3) la descripción de su solicitud. Responderemos en un plazo máximo de <strong>quince (15) días hábiles</strong>. Si la solicitud es compleja, podremos ampliar el plazo hasta treinta (30) días hábiles adicionales, notificándole oportunamente.</p>
+                </div>
+                <div>
+                  <h3>Cancelación de comunicaciones de marketing</h3>
+                  <p>Si recibe comunicaciones de marketing de nuestra parte, puede cancelar su suscripción en cualquier momento contactándonos en <a href="mailto:privacidad@sincro.chat">privacidad@sincro.chat</a>. Continuaremos enviándole únicamente comunicaciones necesarias para la operación del servicio contratado.</p>
+                </div>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 9 -->
+            <section id="seccion-9" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">9</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Señales de no rastreo</h2>
+              </div>
+              <div class="prose-legal">
+                <p>Actualmente no existen estándares técnicos unificados para procesar señales de "No rastrear" (Do-Not-Track) en aplicaciones móviles. Por tanto, nuestra aplicación no responde a este tipo de señales. Si en el futuro se adopta un estándar aplicable, actualizaremos esta política para informarle sobre nuestra práctica.</p>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 10 -->
+            <section id="seccion-10" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">10</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Actualizaciones a esta política</h2>
+              </div>
+              <div class="prose-legal">
+                <p>Podemos actualizar esta Política de Privacidad cuando sea necesario para cumplir con cambios legales o mejoras en nuestros servicios. La fecha de "Última actualización" en la parte superior refleja la versión vigente.</p>
+                <p>Si realizamos cambios materiales, le notificaremos mediante un aviso destacado en la aplicación o por correo electrónico con al menos <strong>quince (15) días</strong> de anticipación. El uso continuo de los Servicios después del período de aviso constituirá aceptación de la política actualizada.</p>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 11 -->
+            <section id="seccion-11" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">11</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Contacto sobre esta política</h2>
+              </div>
+              <div class="rounded-2xl p-6 border border-[--color-border] bg-[--color-surface-alt]">
+                <p class="font-bold text-[--color-text] mb-3">Sincro Systems — Sincro Chat</p>
+                <ul class="space-y-2 text-sm text-[--color-text-muted]">
+                  <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Av29 #14-216, Cúcuta, Norte de Santander 540004, Colombia
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Privacidad: <a href="mailto:privacidad@sincro.chat" class="hover:text-[--color-primary] transition-colors ml-1">privacidad@sincro.chat</a>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    General: <a href="mailto:contacto@sincro.chat" class="hover:text-[--color-primary] transition-colors ml-1">contacto@sincro.chat</a>
+                  </li>
+                </ul>
+                <p class="mt-4 text-xs text-[--color-text-muted]">Fecha de entrada en vigencia: 26 de febrero de 2026</p>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 12 -->
+            <section id="seccion-12" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">12</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Revisión, actualización o eliminación de sus datos</h2>
+              </div>
+              <div class="prose-legal">
+                <p>De acuerdo con la legislación colombiana aplicable, usted tiene derecho a solicitar acceso, corrección o eliminación de su información personal. Para ejercer estos derechos, envíe su solicitud a <a href="mailto:privacidad@sincro.chat">privacidad@sincro.chat</a> con el asunto <strong>"Solicitud de acceso / Habeas Data"</strong>. Procesaremos su solicitud dentro de los plazos establecidos en la <a href="#seccion-8">Sección 8</a>.</p>
+              </div>
+            </section>
+
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .prose-legal p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.75;
+    margin-bottom: 0.75rem;
+  }
+  .prose-legal ul,
+  .prose-legal ol {
+    margin: 0.75rem 0 0.75rem 1.25rem;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.75;
+    list-style: disc;
+  }
+  .prose-legal ol {
+    list-style: decimal;
+  }
+  .prose-legal li {
+    margin-bottom: 0.35rem;
+  }
+  .prose-legal a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 600;
+  }
+  .prose-legal a:hover {
+    color: var(--color-primary-dark);
+  }
+  .prose-legal strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+  .prose-legal h3 {
+    color: var(--color-text);
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    margin-top: 0.25rem;
+  }
+</style>

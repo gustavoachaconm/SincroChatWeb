@@ -1,0 +1,515 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+
+const sections = [
+  { id: 'seccion-1',  num: '1',  title: 'Identificación de las partes' },
+  { id: 'seccion-2',  num: '2',  title: 'Descripción de los servicios' },
+  { id: 'seccion-3',  num: '3',  title: 'Requisitos para la contratación' },
+  { id: 'seccion-4',  num: '4',  title: 'Tarifas y modelo de comisión' },
+  { id: 'seccion-5',  num: '5',  title: 'Obligaciones del cliente' },
+  { id: 'seccion-6',  num: '6',  title: 'Obligaciones de Sincro Chat' },
+  { id: 'seccion-7',  num: '7',  title: 'Deslinde de responsabilidad frente a compradores finales' },
+  { id: 'seccion-8',  num: '8',  title: 'Propiedad intelectual' },
+  { id: 'seccion-9',  num: '9',  title: 'Protección de datos personales' },
+  { id: 'seccion-10', num: '10', title: 'Limitación de responsabilidad' },
+  { id: 'seccion-11', num: '11', title: 'Suspensión y terminación del servicio' },
+  { id: 'seccion-12', num: '12', title: 'Modificaciones a los T&C' },
+  { id: 'seccion-13', num: '13', title: 'Resolución de disputas' },
+  { id: 'seccion-14', num: '14', title: 'Ley aplicable' },
+  { id: 'seccion-15', num: '15', title: 'Comunicaciones electrónicas' },
+  { id: 'seccion-16', num: '16', title: 'Indemnización' },
+  { id: 'seccion-17', num: '17', title: 'Disposiciones varias' },
+  { id: 'seccion-18', num: '18', title: 'Aceptación' },
+  { id: 'seccion-19', num: '19', title: 'Contáctenos' },
+];
+---
+
+<BaseLayout
+  title="Términos y Condiciones de Uso – Sincro Chat"
+  description="Términos y Condiciones de Uso de Sincro Chat. Versión 1.0, vigentes desde el 26 de febrero de 2026."
+>
+  <Header />
+
+  <main>
+
+    <!-- ── Hero ── -->
+    <section class="bg-[--color-surface-alt] border-b border-[--color-border] py-10 md:py-14">
+      <div class="container">
+        <div class="max-w-3xl">
+          <p class="text-xs font-bold uppercase tracking-widest mb-3 text-[--color-text-muted]">Documento legal</p>
+          <h1 class="text-3xl md:text-4xl font-bold text-[--color-text] leading-tight mb-4">
+            Términos y Condiciones de Uso
+          </h1>
+          <div class="flex flex-wrap items-center gap-4 text-sm text-[--color-text-muted]">
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Última actualización: 26 de febrero de 2026
+            </span>
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Versión 1.0
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Contenido ── -->
+    <section class="py-10 md:py-16">
+      <div class="container">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-10 items-start">
+
+          <!-- Tabla de contenido (sticky en desktop) -->
+          <aside class="lg:col-span-1 lg:sticky lg:top-24">
+            <div class="rounded-2xl border border-[--color-border] bg-white shadow-sm overflow-hidden">
+              <div class="px-5 py-4 border-b border-[--color-border]" style="background:var(--color-surface-alt)">
+                <p class="text-xs font-bold uppercase tracking-widest text-[--color-text-muted]">Tabla de contenido</p>
+              </div>
+              <nav aria-label="Secciones del documento">
+                <ol class="py-2">
+                  {sections.map(({ id, num, title }) => (
+                    <li>
+                      <a
+                        href={`#${id}`}
+                        class="flex items-start gap-2.5 px-5 py-2 text-xs text-[--color-text-muted] hover:text-[--color-primary] hover:bg-[--color-surface-alt] transition-colors toc-link"
+                        data-target={id}
+                      >
+                        <span class="font-bold shrink-0 mt-0.5" style="color:var(--color-primary)">{num}.</span>
+                        <span class="leading-snug">{title}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            </div>
+          </aside>
+
+          <!-- Contenido del documento -->
+          <article class="lg:col-span-3 space-y-10">
+
+            <!-- Intro / Acuerdo -->
+            <div class="p-6 rounded-2xl border border-[--color-border] bg-white shadow-sm">
+              <p class="text-sm text-[--color-text-muted] leading-relaxed">
+                Somos <strong class="text-[--color-text]">Sincro Systems</strong> ("Sincro", "nosotros", "nos" o "el Prestador"), operadores de <strong class="text-[--color-text]">Sincro Chat</strong>, plataforma SaaS que permite a negocios de cualquier tipo gestionar ventas y pedidos a través de WhatsApp.
+              </p>
+              <p class="mt-3 text-sm font-semibold text-[--color-text] leading-relaxed uppercase tracking-wide">
+                AL COMPLETAR EL REGISTRO Y ACEPTAR ESTOS TÉRMINOS Y CONDICIONES, EL CLIENTE DECLARA HABERLOS LEÍDO, COMPRENDIDO Y ACEPTADO EN SU TOTALIDAD. SI NO ESTÁ DE ACUERDO, DEBE ABSTENERSE DE USAR LOS SERVICIOS.
+              </p>
+            </div>
+
+            <!-- Sección 1 -->
+            <section id="seccion-1" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">1</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Identificación de las partes</h2>
+              </div>
+              <div class="prose-legal">
+                <p><strong>Sincro Systems</strong> (en adelante "Sincro", "nosotros", "nos" o "el Prestador") es la empresa operadora de Sincro Chat. Puede contactarnos en <a href="mailto:contacto@sincro.chat">contacto@sincro.chat</a> o por correo postal en <strong>Av29 #14-216, Cúcuta, Norte de Santander, Colombia</strong>.</p>
+                <p>El <strong>Cliente</strong> es la persona natural o jurídica legalmente constituida que contrata los servicios de Sincro Chat para gestionar sus ventas a través de WhatsApp.</p>
+                <p>Los presentes Términos y Condiciones (en adelante "T&amp;C") constituyen un acuerdo legalmente vinculante entre Sincro y el Cliente.</p>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 2 -->
+            <section id="seccion-2" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">2</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Descripción de los servicios</h2>
+              </div>
+              <div class="prose-legal">
+                <p>Sincro Chat provee a sus Clientes los siguientes servicios:</p>
+                <ul>
+                  <li>Gestión automatizada de pedidos y ventas mediante WhatsApp Business API.</li>
+                  <li>Notificaciones en tiempo real a clientes finales, al negocio y, cuando aplique, al personal de entrega.</li>
+                  <li>Panel de administración y reportes de órdenes procesadas.</li>
+                  <li>Soporte técnico básico a través de WhatsApp o correo electrónico en horario hábil.</li>
+                </ul>
+                <p>Sincro Chat es una plataforma tecnológica. No es parte de las transacciones entre el Cliente y sus compradores finales, ni actúa como vendedor, intermediario financiero, transportista ni prestador de servicios distintos a los expresamente indicados en esta cláusula.</p>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 3 -->
+            <section id="seccion-3" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">3</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Requisitos para la contratación</h2>
+              </div>
+              <div class="prose-legal">
+                <p>Para contratar los servicios de Sincro Chat, el Cliente debe:</p>
+                <ul>
+                  <li>Ser una persona natural o jurídica legalmente constituida en Colombia o en el país donde opere.</li>
+                  <li>Contar con un número de WhatsApp Business válido y activo.</li>
+                  <li>Completar el formulario de registro con información veraz, completa y actualizada.</li>
+                  <li>Aceptar expresamente los presentes T&amp;C.</li>
+                  <li>Cumplir con los requisitos técnicos mínimos indicados por Sincro Chat.</li>
+                  <li>No ser menor de edad en su jurisdicción.</li>
+                </ul>
+                <p>Sincro Chat se reserva el derecho de rechazar solicitudes de vinculación sin necesidad de justificación.</p>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 4 -->
+            <section id="seccion-4" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">4</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Tarifas y modelo de comisión</h2>
+              </div>
+              <div class="prose-legal space-y-5">
+                <div>
+                  <h3>4.1 Estructura de cobro</h3>
+                  <p>El modelo de cobro se basa en una comisión porcentual sobre el valor total de cada orden procesada. El porcentaje aplicable será acordado individualmente con cada Cliente al momento de la vinculación y quedará consignado en la propuesta comercial aceptada por ambas partes.</p>
+                </div>
+                <div>
+                  <h3>4.2 Liquidaciones quincenales</h3>
+                  <p>Las comisiones se liquidarán de forma quincenal, con corte los días 15 y último día calendario de cada mes. Sincro Chat remitirá al Cliente un informe de las órdenes procesadas durante el período, con el detalle del monto total y la comisión correspondiente.</p>
+                </div>
+                <div>
+                  <h3>4.3 Pago de la comisión</h3>
+                  <p>El Cliente deberá transferir el valor de la comisión liquidada dentro de los cinco (5) días hábiles siguientes a la fecha de corte. El incumplimiento reiterado podrá dar lugar a la suspensión o terminación del servicio (ver <a href="#seccion-11">Cláusula 11</a>).</p>
+                </div>
+                <div>
+                  <h3>4.4 Modificación de tarifas</h3>
+                  <p>Sincro Chat podrá modificar las tarifas con un preaviso mínimo de treinta (30) días calendario comunicado por escrito. Si el Cliente no acepta la nueva tarifa, podrá terminar el contrato sin penalidad dentro del período de aviso.</p>
+                </div>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 5 -->
+            <section id="seccion-5" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">5</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Obligaciones del cliente</h2>
+              </div>
+              <div class="prose-legal">
+                <p>El Cliente se compromete a:</p>
+                <ul>
+                  <li>Mantener actualizada la información de su negocio en la plataforma (catálogo, precios, horarios, zona de cobertura).</li>
+                  <li>Atender oportunamente los pedidos y solicitudes recibidas a través de la plataforma.</li>
+                  <li>Garantizar la veracidad de la información proporcionada a sus compradores finales.</li>
+                  <li>No utilizar la plataforma para fines ilícitos, fraudulentos o contrarios a la legislación colombiana.</li>
+                  <li>Reportar a Sincro Chat cualquier falla técnica o incidente de seguridad de manera oportuna.</li>
+                  <li>Mantener la confidencialidad de las credenciales de acceso a la plataforma.</li>
+                  <li>Cumplir con las Políticas de Uso de WhatsApp Business API de Meta Platforms, Inc.</li>
+                  <li>Pagar las comisiones en los términos y plazos establecidos en la <a href="#seccion-4">Cláusula 4</a>.</li>
+                  <li>No copiar, reproducir, distribuir ni explotar comercialmente el software o los contenidos de la plataforma sin autorización expresa y escrita de Sincro.</li>
+                  <li>No intentar eludir, hackear o interferir con las funciones de seguridad de la plataforma.</li>
+                  <li>No suplantar la identidad de otros usuarios, personas o empresas dentro de la plataforma.</li>
+                </ul>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 6 -->
+            <section id="seccion-6" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">6</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Obligaciones de Sincro Chat</h2>
+              </div>
+              <div class="prose-legal">
+                <p>Sincro Chat se compromete a:</p>
+                <ul>
+                  <li>Proveer la plataforma en condiciones óptimas con una disponibilidad objetivo del 95% mensual.</li>
+                  <li>Notificar al Cliente con antelación razonable sobre mantenimientos programados que afecten el servicio.</li>
+                  <li>Proteger la información del Cliente y de sus clientes finales conforme a la Ley 1581 de 2012 y el Decreto 1377 de 2013 (ver <a href="#seccion-9">Cláusula 9</a>).</li>
+                  <li>Emitir liquidaciones quincenales claras y detalladas (ver <a href="#seccion-4">Cláusula 4</a>).</li>
+                  <li>Brindar soporte técnico básico en horario hábil.</li>
+                </ul>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 7 -->
+            <section id="seccion-7" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">7</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Deslinde de responsabilidad frente a compradores finales</h2>
+              </div>
+              <div class="prose-legal">
+                <p>Sincro Chat es únicamente una plataforma tecnológica y no es parte en las transacciones comerciales entre el Cliente y sus compradores finales. En consecuencia, Sincro Chat <strong>NO</strong> asume ninguna responsabilidad por:</p>
+                <ul>
+                  <li>La calidad, idoneidad, entrega o cumplimiento de los productos o servicios ofrecidos por el Cliente a sus compradores finales.</li>
+                  <li>Disputas, reclamaciones, devoluciones o inconformidades entre el Cliente y sus compradores finales respecto a pedidos, pagos, precios o cualquier otro aspecto de la transacción comercial.</li>
+                  <li>Errores u omisiones en la información del catálogo, precios o condiciones suministrada por el Cliente en la plataforma.</li>
+                  <li>Daños, pérdidas o perjuicios sufridos por los compradores finales como consecuencia de las actividades comerciales del Cliente.</li>
+                </ul>
+                <p>El Cliente es el único responsable frente a sus compradores finales y deberá atender directamente cualquier reclamación que estos presenten. El Cliente se obliga a indemnizar y mantener indemne a Sincro Chat frente a cualquier reclamación de terceros derivada de las actividades comerciales del Cliente (ver <a href="#seccion-16">Cláusula 16</a>).</p>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 8 -->
+            <section id="seccion-8" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">8</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Propiedad intelectual</h2>
+              </div>
+              <div class="prose-legal">
+                <p>Todos los derechos de propiedad intelectual sobre la plataforma Sincro Chat, incluyendo su código fuente, diseño, marca, logotipos, bases de datos, funcionalidades, software y documentación, son de titularidad exclusiva de Sincro Systems. Los presentes T&amp;C no transfieren al Cliente ningún derecho de propiedad intelectual sobre la plataforma.</p>
+                <p>El Cliente concede a Sincro Chat una licencia no exclusiva para utilizar el nombre, logotipo e imagen de su negocio con el único fin de configurar y operar la plataforma en beneficio del propio Cliente. Sincro Chat no explotará comercialmente dichos elementos fuera de este propósito.</p>
+                <p>Al enviar sugerencias o comentarios sobre los Servicios, el Cliente acepta ceder a Sincro todos los derechos de propiedad intelectual sobre dichos aportes.</p>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 9 -->
+            <section id="seccion-9" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">9</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Protección de datos personales</h2>
+              </div>
+              <div class="prose-legal">
+                <p>Sincro Chat trata los datos personales del Cliente y de los compradores finales de conformidad con la <strong>Ley Estatutaria 1581 de 2012</strong> y el <strong>Decreto 1377 de 2013</strong>. Los datos recopilados serán utilizados exclusivamente para la prestación del servicio contratado, la liquidación de comisiones y el soporte técnico.</p>
+                <p>El Cliente, como responsable del tratamiento de los datos de sus compradores finales, declara contar con las autorizaciones necesarias para el tratamiento de dichos datos dentro de la plataforma de Sincro Chat, y exonera a Sincro Chat de cualquier responsabilidad derivada del incumplimiento de esta obligación.</p>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 10 -->
+            <section id="seccion-10" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">10</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Limitación de responsabilidad</h2>
+              </div>
+              <div class="prose-legal">
+                <p class="uppercase font-semibold text-sm">Los servicios se proporcionan "tal cual" y "según disponibilidad". Sincro Chat no será responsable por:</p>
+                <ul>
+                  <li>Interrupciones del servicio originadas en fallas de Meta Platforms (WhatsApp), proveedores de internet o causas de fuerza mayor.</li>
+                  <li>Pérdidas de negocio derivadas de la no disponibilidad temporal de la plataforma.</li>
+                  <li>Daños directos, indirectos, consecuentes o punitivos derivados del uso de la plataforma.</li>
+                  <li>Errores, acceso no autorizado, virus u otros elementos maliciosos introducidos por terceros.</li>
+                </ul>
+                <p class="font-semibold text-[--color-text]">En ningún caso la responsabilidad de Sincro Chat excederá el valor de las comisiones pagadas por el Cliente en los seis (6) meses inmediatamente anteriores al evento que originó el reclamo.</p>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 11 -->
+            <section id="seccion-11" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">11</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Suspensión y terminación del servicio</h2>
+              </div>
+              <div class="prose-legal space-y-5">
+                <div>
+                  <h3>11.1 Por parte de Sincro Chat</h3>
+                  <p>Sincro Chat podrá suspender o terminar el servicio de forma inmediata, sin previo aviso ni responsabilidad, en caso de:</p>
+                  <ul>
+                    <li>Incumplimiento en el pago de comisiones por más de un (1) período de liquidación (ver <a href="#seccion-4">Cláusula 4</a>).</li>
+                    <li>Uso de la plataforma para actividades ilegales o fraudulentas.</li>
+                    <li>Violación de las Políticas de Uso de WhatsApp Business API de Meta.</li>
+                    <li>Daño reputacional grave causado al Prestador.</li>
+                    <li>Violación de cualquiera de las obligaciones establecidas en la <a href="#seccion-5">Cláusula 5</a>.</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3>11.2 Por parte del Cliente</h3>
+                  <p>El Cliente podrá terminar el contrato en cualquier momento mediante notificación escrita con un mínimo de quince (15) días de anticipación, sin perjuicio del pago de las comisiones causadas hasta la fecha de terminación efectiva.</p>
+                </div>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 12 -->
+            <section id="seccion-12" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">12</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Modificaciones a los Términos y Condiciones</h2>
+              </div>
+              <div class="prose-legal">
+                <p>Sincro Chat se reserva el derecho de modificar los presentes T&amp;C. Las modificaciones serán notificadas al Cliente por escrito (correo electrónico o WhatsApp) con un mínimo de <strong>quince (15) días</strong> de anticipación. El uso continuo de la plataforma una vez vencido el período de aviso constituirá aceptación de los nuevos términos. Si el Cliente no acepta los cambios, podrá terminar el contrato sin penalidad durante el período de aviso (ver <a href="#seccion-11">Cláusula 11</a>).</p>
+                <p>Sincro Chat también se reserva el derecho de modificar, suspender o descontinuar cualquier aspecto de los Servicios en cualquier momento, con notificación previa razonable al Cliente.</p>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 13 -->
+            <section id="seccion-13" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">13</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Resolución de disputas</h2>
+              </div>
+              <div class="prose-legal space-y-5">
+                <div>
+                  <h3>13.1 Negociación informal</h3>
+                  <p>Las partes acuerdan intentar resolver cualquier disputa de buena fe mediante negociación directa durante un período mínimo de <strong>treinta (30) días calendario</strong>, contados desde la notificación escrita del conflicto por cualquiera de las partes.</p>
+                </div>
+                <div>
+                  <h3>13.2 Arbitraje vinculante</h3>
+                  <p>De no llegarse a un acuerdo durante la negociación informal (ver <a href="#seccion-13">Cláusula 13.1</a>), cualquier disputa será resuelta mediante arbitraje vinculante ante el Centro de Arbitraje y Conciliación de la Cámara de Comercio de Cúcuta. El procedimiento se adelantará con un (1) árbitro, en idioma español, con sede en Cúcuta, Colombia, y aplicando la legislación colombiana vigente.</p>
+                </div>
+                <div>
+                  <h3>13.3 Restricciones</h3>
+                  <p>El arbitraje se limitará estrictamente a la disputa entre las partes de manera individual. No se permite el arbitraje colectivo ni la representación de terceros en el mismo procedimiento.</p>
+                </div>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 14 -->
+            <section id="seccion-14" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">14</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Ley aplicable</h2>
+              </div>
+              <div class="prose-legal">
+                <p>Los presentes T&amp;C se rigen por las leyes de la <strong>República de Colombia</strong>. Para asuntos no sometidos a arbitraje (ver <a href="#seccion-13">Cláusula 13</a>), las partes aceptan la jurisdicción complementaria de los jueces competentes de la ciudad de Cúcuta, Norte de Santander, Colombia.</p>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 15 -->
+            <section id="seccion-15" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">15</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Comunicaciones electrónicas</h2>
+              </div>
+              <div class="prose-legal">
+                <p>Al registrarse y usar los Servicios, el Cliente acepta recibir comunicaciones electrónicas (correo electrónico, WhatsApp) de Sincro Chat relacionadas con el servicio, liquidaciones, avisos legales y notificaciones de cambios. El Cliente acepta que dichas comunicaciones tienen plena validez legal y equivalen a comunicaciones escritas. Las notificaciones se realizarán al correo electrónico o número de WhatsApp registrados al momento de la vinculación.</p>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 16 -->
+            <section id="seccion-16" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">16</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Indemnización</h2>
+              </div>
+              <div class="prose-legal">
+                <p>El Cliente acepta defender, indemnizar y mantener indemne a Sincro Chat, sus directivos, empleados y colaboradores frente a cualquier reclamación, daño, pérdida, costo o gasto (incluidos honorarios de abogados) derivados de:</p>
+                <ol>
+                  <li>El uso de los Servicios por parte del Cliente.</li>
+                  <li>El incumplimiento de estos T&amp;C.</li>
+                  <li>La violación de derechos de terceros, incluyendo compradores finales (ver <a href="#seccion-7">Cláusula 7</a>).</li>
+                  <li>Cualquier acto u omisión del Cliente en el ejercicio de su actividad comercial.</li>
+                </ol>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 17 -->
+            <section id="seccion-17" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">17</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Disposiciones varias</h2>
+              </div>
+              <div class="prose-legal">
+                <p>Estos T&amp;C constituyen el acuerdo completo entre el Cliente y Sincro Chat respecto al objeto aquí regulado, y reemplazan cualquier acuerdo previo. No se crea ninguna relación de sociedad, empleo o agencia entre las partes. Si alguna disposición se determina ilegal o inaplicable, las demás disposiciones permanecerán vigentes. La omisión de Sincro Chat en exigir el cumplimiento de alguna disposición no constituye renuncia al derecho de exigirla en el futuro.</p>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 18 -->
+            <section id="seccion-18" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">18</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Aceptación</h2>
+              </div>
+              <div class="prose-legal">
+                <p>Al completar el formulario de registro y hacer clic en "Acepto los Términos y Condiciones", el representante legal o persona autorizada del negocio declara:</p>
+                <ul>
+                  <li>Haber leído y comprendido la totalidad de los presentes T&amp;C.</li>
+                  <li>Tener capacidad legal para obligar al negocio que representa.</li>
+                  <li>Aceptar expresamente todas las condiciones aquí establecidas.</li>
+                </ul>
+              </div>
+            </section>
+
+            <hr class="border-[--color-border]" />
+
+            <!-- Sección 19 -->
+            <section id="seccion-19" class="scroll-mt-28">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style="background:var(--color-primary)">19</span>
+                <h2 class="text-xl font-bold text-[--color-text]">Contáctenos</h2>
+              </div>
+              <div class="rounded-2xl p-6 border border-[--color-border] bg-[--color-surface-alt]">
+                <p class="font-bold text-[--color-text] mb-3">Sincro Systems — Sincro Chat</p>
+                <ul class="space-y-2 text-sm text-[--color-text-muted]">
+                  <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Av29 #14-216, Cúcuta, Norte de Santander, Colombia
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <a href="mailto:contacto@sincro.chat" class="hover:text-[--color-primary] transition-colors">contacto@sincro.chat</a>
+                  </li>
+                </ul>
+                <p class="mt-4 text-xs text-[--color-text-muted]">Fecha de entrada en vigencia: 26 de febrero de 2026</p>
+              </div>
+            </section>
+
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .prose-legal p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.75;
+    margin-bottom: 0.75rem;
+  }
+  .prose-legal ul,
+  .prose-legal ol {
+    margin: 0.75rem 0 0.75rem 1.25rem;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.75;
+    list-style: disc;
+  }
+  .prose-legal ol {
+    list-style: decimal;
+  }
+  .prose-legal li {
+    margin-bottom: 0.35rem;
+  }
+  .prose-legal a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 600;
+  }
+  .prose-legal a:hover {
+    color: var(--color-primary-dark);
+  }
+  .prose-legal strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+  .prose-legal h3 {
+    color: var(--color-text);
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+</style>

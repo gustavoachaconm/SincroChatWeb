@@ -1,0 +1,110 @@
+---
+const navLinks = [
+  { label: 'Cómo funciona', href: '/como-funciona' },
+  { label: 'Precios', href: '/precios' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contacto', href: '/contacto' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-[--color-border]">
+  <div class="container flex items-center justify-between h-16 md:h-20">
+
+    <!-- Logo -->
+    <a href="/" aria-label="Sincro Chat – Inicio" class="flex items-center gap-2">
+      <img src="/logo.svg" alt="" aria-hidden="true" class="h-8 w-8 md:h-11 md:w-11" width="44" height="44" />
+      <span class="font-bold text-xl md:text-2xl text-[--color-text]">
+        Sincro<span style="color:var(--color-primary)">Chat</span>
+      </span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav aria-label="Navegación principal" class="hidden md:flex items-center gap-6">
+      {navLinks.map(({ label, href }) => (
+        <a
+          href={href}
+          class={[
+            'text-sm font-medium transition-colors hover:text-[--color-primary]',
+            currentPath === href ? 'text-[--color-primary]' : 'text-[--color-text-muted]',
+          ].join(' ')}
+          aria-current={currentPath === href ? 'page' : undefined}
+        >
+          {label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- CTA -->
+    <div class="flex items-center gap-3">
+      <a
+        href="https://wa.me/573155615323?text=Hola%2C+quiero+saber+m%C3%A1s+de+Sincro+Chat"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-90"
+        style="background:var(--color-primary)"
+      >
+        Contáctanos
+      </a>
+
+      <!-- Mobile menu button -->
+      <button
+        id="mobile-menu-btn"
+        type="button"
+        class="md:hidden p-2 rounded-lg text-[--color-text-muted] hover:bg-[--color-surface-alt] transition-colors"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="md:hidden hidden border-t border-[--color-border] bg-white"
+    role="navigation"
+    aria-label="Menú móvil"
+  >
+    <nav class="container py-4 flex flex-col gap-1">
+      {navLinks.map(({ label, href }) => (
+        <a
+          href={href}
+          class={[
+            'px-3 py-2 rounded-lg text-sm font-medium transition-colors',
+            currentPath === href
+              ? 'bg-[--color-primary-light] text-[--color-primary-dark]'
+              : 'text-[--color-text-muted] hover:bg-[--color-surface-alt]',
+          ].join(' ')}
+        >
+          {label}
+        </a>
+      ))}
+      <a
+        href="https://wa.me/573155615323?text=Hola%2C+quiero+saber+m%C3%A1s+de+Sincro+Chat"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-2 px-4 py-2 rounded-lg text-sm font-semibold text-white text-center transition-opacity hover:opacity-90"
+        style="background:var(--color-primary)"
+      >
+        Contáctanos
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('hidden') === false;
+    btn.setAttribute('aria-expanded', String(isOpen));
+  });
+</script>

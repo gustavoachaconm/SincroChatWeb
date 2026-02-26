@@ -1,0 +1,398 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import { features, howItWorks, faqs, testimonials, problems } from '../data/home';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Sincro Chat',
+  applicationCategory: 'BusinessApplication',
+  description: 'Sistema SaaS que automatiza la toma de pedidos en restaurantes y negocios a través de WhatsApp. Convierte conversaciones en pedidos estructurados con menú interactivo, validación de datos y métricas en tiempo real.',
+  url: 'https://sincrochat.com',
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'COP',
+    description: 'Comisión por pedido procesado, muy inferior a plataformas de delivery tradicionales',
+  },
+  operatingSystem: 'Web',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+
+/* ── Inline SVGs para los iconos de features ── */
+const featureIcons: Record<string, string> = {
+  UtensilsCrossed: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8"/><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7"/><path d="m2.1 21.8 6.4-6.3"/><path d="m19 5-7 7"/></svg>`,
+  ListOrdered: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="10" x2="21" y1="6" y2="6"/><line x1="10" x2="21" y1="12" y2="12"/><line x1="10" x2="21" y1="18" y2="18"/><path d="M4 6h1v4"/><path d="M4 10h2"/><path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>`,
+  ShieldCheck: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>`,
+  CheckCircle: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`,
+  Zap: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+  BarChart2: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg>`,
+};
+---
+
+<BaseLayout
+  title="Sincro Chat – Automatiza tus pedidos por WhatsApp | Para restaurantes y negocios"
+  description="Sincro Chat convierte las conversaciones de WhatsApp en pedidos estructurados. Menú interactivo, validación automática, confirmación y métricas. Para restaurantes y cualquier negocio que venda por WhatsApp."
+  schema={schema}
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <Header />
+
+  <main>
+
+    <!-- ── Hero ── -->
+    <section class="relative overflow-hidden py-16 md:py-24" style="background: linear-gradient(160deg, #f0fff8 0%, #ffffff 55%, #fff8f3 100%)">
+      <!-- Decorative blobs -->
+      <div class="pointer-events-none absolute -top-24 -right-24 w-[480px] h-[480px] rounded-full opacity-25" style="background:var(--color-primary); filter:blur(120px)"></div>
+      <div class="pointer-events-none absolute -bottom-24 -left-24 w-[380px] h-[380px] rounded-full opacity-15" style="background:var(--color-accent); filter:blur(100px)"></div>
+
+      <div class="container relative">
+        <div class="max-w-3xl mx-auto text-center">
+          <p class="animate-fade-in-up inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-6" style="background:var(--color-accent-light); color:var(--color-accent-dark)">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Para restaurantes y negocios · Sin apps · Sin complicaciones
+          </p>
+          <h1 class="animate-fade-in-up-delay-1 text-4xl md:text-6xl font-bold tracking-tight text-[--color-text] leading-tight">
+            Tu <span style="color:var(--color-primary)">WhatsApp</span>, convertido en un sistema de pedidos automático
+          </h1>
+          <p class="animate-fade-in-up-delay-2 mt-6 text-lg md:text-xl text-[--color-text-muted] leading-relaxed">
+            Muestra tu menú, guía al cliente, valida el pedido y te lo entrega organizado — todo dentro de WhatsApp, sin intervención manual.
+          </p>
+          <div class="animate-fade-in-up-delay-2 mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://wa.me/573155615323?text=Hola%2C+quiero+saber+m%C3%A1s+de+Sincro+Chat"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white text-base shadow-lg transition-all hover:shadow-xl hover:-translate-y-0.5"
+              style="background:var(--color-primary)"
+            >
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              Hablar con Ventas
+            </a>
+            <a
+              href="/como-funciona"
+              class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-base border-2 bg-white transition-all hover:-translate-y-0.5"
+              style="border-color:var(--color-accent); color:var(--color-accent)"
+            >
+              Ver cómo funciona →
+            </a>
+          </div>
+          <p class="mt-5 text-sm text-[--color-text-muted]">Configuración en menos de 1 hora · Soporte incluido</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Stats strip ── -->
+    <section class="border-y border-[--color-border] bg-white py-6" aria-label="Datos clave">
+      <div class="container">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+          {[
+            { value: '+500', label: 'Pedidos/día automatizados' },
+            { value: '0', label: 'Errores en toma de pedidos' },
+            { value: '< 1h', label: 'Para configurar' },
+            { value: '24/7', label: 'Atención automática' },
+          ].map(({ value, label }) => (
+            <div class="flex flex-col items-center gap-1">
+              <span class="text-2xl md:text-3xl font-black" style="color:var(--color-primary)">{value}</span>
+              <span class="text-xs text-[--color-text-muted] font-medium text-center">{label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Narrativa: Contexto → Problema → Solución ── -->
+    <section class="py-12 md:py-20" aria-labelledby="narrativa-heading">
+      <div class="container">
+        <h2 id="narrativa-heading" class="sr-only">Por qué existe Sincro Chat</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[--color-border] rounded-2xl overflow-hidden border border-[--color-border] shadow-sm">
+
+          <!-- Panel 1 – El contexto -->
+          <div class="bg-white p-8 md:p-10 flex flex-col gap-5">
+            <div class="flex items-center gap-2">
+              <span class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-black text-white shrink-0" style="background:var(--color-text-muted)">1</span>
+              <span class="text-xs font-bold uppercase tracking-widest text-[--color-text-muted]">El contexto</span>
+            </div>
+            <div>
+              <h3 class="text-xl md:text-2xl font-bold text-[--color-text] leading-snug mb-3">
+                WhatsApp es el canal de ventas más usado en Colombia y Latinoamérica
+              </h3>
+              <p class="text-[--color-text-muted] leading-relaxed text-sm">
+                Tus clientes no quieren instalar una app ni registrarse en ningún sitio. Ya tienen WhatsApp y prefieren pedir por ahí. Es el canal que más convierte — y el que más negocios ignoran correctamente.
+              </p>
+            </div>
+            <div class="mt-auto flex items-center gap-2 text-sm font-semibold text-[--color-text-muted]">
+              <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="22 4 12 14.01 9 11.01"/><path d="M22 4H15"/><path d="M22 4V11"/></svg>
+              Canal preferido en LATAM
+            </div>
+          </div>
+
+          <!-- Panel 2 – El problema -->
+          <div class="p-8 md:p-10 flex flex-col gap-5" style="background:#fff8f8">
+            <div class="flex items-center gap-2">
+              <span class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-black text-white shrink-0" style="background:#EF4444">2</span>
+              <span class="text-xs font-bold uppercase tracking-widest" style="color:#EF4444">El problema</span>
+            </div>
+            <div>
+              <h3 class="text-xl md:text-2xl font-bold text-[--color-text] leading-snug mb-3">
+                El volumen crece. La gestión manual no escala.
+              </h3>
+              <p class="text-sm leading-relaxed mb-5" style="color:#6B7280">
+                La misma persona que atiende el local también responde los chats, anota pedidos, los interpreta y los pasa a cocina. Con 10 pedidos es posible. Con 50, imposible.
+              </p>
+              <ul class="space-y-2.5">
+                {problems.map(({ icon, text }) => (
+                  <li class="flex items-center gap-2.5 text-sm" style="color:#B91C1C">
+                    <span class="shrink-0" aria-hidden="true">{icon}</span>
+                    <span>{text}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <!-- Panel 3 – La solución -->
+          <div class="p-8 md:p-10 flex flex-col gap-5" style="background: linear-gradient(160deg, var(--color-primary-light) 0%, #ffffff 70%)">
+            <div class="flex items-center gap-2">
+              <span class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-black text-white shrink-0" style="background:var(--color-primary)">3</span>
+              <span class="text-xs font-bold uppercase tracking-widest" style="color:var(--color-primary-dark)">La solución</span>
+            </div>
+            <div>
+              <h3 class="text-xl md:text-2xl font-bold text-[--color-text] leading-snug mb-3">
+                Sincro Chat automatiza el flujo completo — sin cambiar tu canal
+              </h3>
+              <p class="text-sm leading-relaxed mb-5 text-[--color-text-muted]">
+                Tu número de WhatsApp sigue siendo el mismo. El sistema toma el pedido, valida los datos y te lo entrega organizado. Sin errores. Sin intervención manual.
+              </p>
+              <ul class="space-y-3">
+                {[
+                  'Pedidos tomados automáticamente, sin errores',
+                  'Tu equipo se enfoca en preparar y despachar',
+                  'Escala sin límite, sin contratar más gente',
+                ].map((text) => (
+                  <li class="flex items-center gap-2.5 text-sm font-semibold text-[--color-text]">
+                    <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-white text-xs font-black" style="background:var(--color-primary)">✓</span>
+                    {text}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="mt-auto">
+              <a
+                href="https://wa.me/573155615323?text=Hola%2C+quiero+saber+m%C3%A1s+de+Sincro+Chat"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
+                style="background:var(--color-primary)"
+              >
+                Quiero automatizar mis pedidos →
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Cómo funciona ── -->
+    <section class="py-10 md:py-16 bg-[--color-surface-alt]" aria-labelledby="como-funciona-heading">
+      <div class="container">
+        <div class="text-center mb-10">
+          <h2 id="como-funciona-heading" class="text-3xl md:text-4xl font-bold text-[--color-text]">
+            El sistema trabaja. Tú despachas.
+          </h2>
+          <p class="mt-4 text-[--color-text-muted] text-lg max-w-xl mx-auto">
+            Así funciona el flujo de pedidos dentro de WhatsApp con Sincro Chat.
+          </p>
+        </div>
+        <ol class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {howItWorks.map(({ step, title, description }, i) => (
+            <li class="relative flex flex-col items-start p-6 rounded-2xl bg-white border border-[--color-border] shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-200">
+              <span
+                class="w-12 h-12 rounded-full flex items-center justify-center text-white text-xl font-black mb-5 shadow-md"
+                style={`background:var(--color-${i % 2 === 0 ? 'primary' : 'accent'})`}
+              >
+                {step}
+              </span>
+              <h3 class="text-xl font-bold text-[--color-text] mb-2">{title}</h3>
+              <p class="text-[--color-text-muted] leading-relaxed">{description}</p>
+            </li>
+          ))}
+        </ol>
+        <div class="mt-10 text-center">
+          <a href="/como-funciona" class="text-[--color-primary] font-semibold hover:underline">
+            Ver el flujo completo →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Features ── -->
+    <section class="py-10 md:py-16" aria-labelledby="features-heading">
+      <div class="container">
+        <div class="text-center mb-10">
+          <h2 id="features-heading" class="text-3xl md:text-4xl font-bold text-[--color-text]">
+            No es solo un bot. Es un sistema de pedidos.
+          </h2>
+          <p class="mt-4 text-[--color-text-muted] text-lg max-w-xl mx-auto">
+            Sincro Chat cubre todo el proceso, desde que el cliente escribe hasta que el pedido queda listo para preparar.
+          </p>
+        </div>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map(({ icon, title, description }, i) => {
+            const color = i % 2 === 0 ? 'primary' : 'accent';
+            return (
+              <li class="flex flex-col p-6 rounded-2xl bg-white border border-[--color-border] shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-200" style={`border-top: 3px solid var(--color-${color})`}>
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={`background:var(--color-${color}-light); color:var(--color-${color}-dark)`} set:html={featureIcons[icon]} />
+                <h3 class="text-lg font-bold text-[--color-text] mb-2">{title}</h3>
+                <p class="text-[--color-text-muted] text-sm leading-relaxed">{description}</p>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── Testimonios ── -->
+    <section class="py-10 md:py-16 bg-[--color-surface-alt]" aria-labelledby="testimonios-heading">
+      <div class="container">
+        <h2 id="testimonios-heading" class="text-3xl md:text-4xl font-bold text-[--color-text] text-center mb-10">
+          Negocios que ya automatizan sus pedidos
+        </h2>
+        <ul class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {testimonials.map(({ name, business, quote }, i) => {
+            const color = i % 2 === 0 ? 'primary' : 'accent';
+            return (
+              <li class="relative flex flex-col p-6 rounded-2xl border border-[--color-border] bg-white shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-200 overflow-hidden">
+                <!-- Decorative quote mark -->
+                <span class="absolute top-4 right-5 text-7xl font-black leading-none pointer-events-none select-none" style={`color:var(--color-${color}); opacity:0.07`} aria-hidden="true">❝</span>
+                <blockquote class="text-[--color-text-muted] leading-relaxed flex-1 italic relative z-10">
+                  <p>"{quote}"</p>
+                </blockquote>
+                <footer class="mt-6 flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm text-white shrink-0 shadow-sm" style={`background:var(--color-${color})`}>
+                    {name.charAt(0)}
+                  </div>
+                  <div>
+                    <cite class="not-italic font-semibold text-[--color-text] text-sm block">{name}</cite>
+                    <span class="text-[--color-text-muted] text-xs">{business}</span>
+                  </div>
+                </footer>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── Comisiones ── -->
+    <section class="py-10 md:py-16" aria-labelledby="precios-heading">
+      <div class="container text-center">
+        <h2 id="precios-heading" class="text-3xl md:text-4xl font-bold text-[--color-text]">
+          Comisiones justas. Sin sorpresas.
+        </h2>
+        <p class="mt-4 text-lg text-[--color-text-muted] max-w-xl mx-auto">
+          Cobramos una comisión por pedido procesado, significativamente menor a lo que retienen los grandes marketplaces de delivery (25–30%). Tú vendes más y te quedas con más.
+        </p>
+        <a
+          href="/precios"
+          class="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-xl font-semibold border-2 border-[--color-primary] text-[--color-primary] hover:bg-[--color-primary] hover:text-white transition-colors"
+        >
+          Ver estructura de comisiones →
+        </a>
+      </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section class="py-10 md:py-16 bg-[--color-surface-alt]" aria-labelledby="faq-heading">
+      <div class="container max-w-2xl">
+        <h2 id="faq-heading" class="text-3xl md:text-4xl font-bold text-[--color-text] text-center mb-8">
+          Preguntas frecuentes
+        </h2>
+        <dl class="space-y-4">
+          {faqs.map(({ question, answer }) => (
+            <div class="border border-[--color-border] rounded-xl overflow-hidden bg-white shadow-sm">
+              <dt>
+                <button
+                  type="button"
+                  class="w-full flex items-center justify-between px-6 py-4 text-left font-semibold text-[--color-text] hover:bg-[--color-surface-alt] transition-colors faq-btn"
+                  aria-expanded="false"
+                >
+                  <span>{question}</span>
+                  <svg class="w-5 h-5 shrink-0 transition-transform faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </button>
+              </dt>
+              <dd class="hidden px-6 pb-4 text-[--color-text-muted] leading-relaxed faq-answer">
+                {answer}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <!-- ── CTA Final ── -->
+    <section class="relative overflow-hidden py-16 md:py-20" aria-labelledby="cta-heading" style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%)">
+      <!-- Decorative circles -->
+      <div class="pointer-events-none absolute -top-16 -right-16 w-64 h-64 rounded-full border-2 border-white opacity-10"></div>
+      <div class="pointer-events-none absolute -bottom-20 -left-20 w-80 h-80 rounded-full border-2 border-white opacity-10"></div>
+      <div class="pointer-events-none absolute top-1/2 right-1/4 w-32 h-32 rounded-full border border-white opacity-5"></div>
+
+      <div class="container relative text-center text-white">
+        <h2 id="cta-heading" class="text-3xl md:text-4xl font-bold mb-4">
+          ¿Listo para automatizar tus pedidos de WhatsApp?
+        </h2>
+        <p class="text-lg opacity-90 max-w-xl mx-auto mb-10">
+          Habla con nuestro equipo y te mostramos cómo funciona Sincro Chat para tu tipo de negocio. Sin compromiso.
+        </p>
+        <a
+          href="https://wa.me/573155615323?text=Hola%2C+quiero+saber+m%C3%A1s+de+Sincro+Chat"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white font-bold text-lg shadow-lg transition-all hover:shadow-xl hover:-translate-y-0.5"
+          style="color:var(--color-primary)"
+        >
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Hablar con Ventas
+        </a>
+        <p class="mt-5 text-sm opacity-70">Configuración en menos de 1 hora · Soporte incluido</p>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.faq-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const answer = btn.closest('div')?.querySelector<HTMLElement>('.faq-answer');
+      const icon = btn.querySelector<SVGElement>('.faq-icon');
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      answer?.classList.toggle('hidden', isOpen);
+      icon?.classList.toggle('rotate-180', !isOpen);
+    });
+  });
+</script>

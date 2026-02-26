@@ -1,0 +1,79 @@
+---
+const currentYear = new Date().getFullYear();
+
+const footerLinks = {
+  Producto: [
+    { label: 'Cómo funciona', href: '/como-funciona' },
+    { label: 'Precios', href: '/precios' },
+    { label: 'Blog', href: '/blog' },
+  ],
+  Empresa: [
+    { label: 'Contacto', href: '/contacto' },
+    { label: 'Política de privacidad', href: '/privacidad' },
+    { label: 'Términos y condiciones', href: '/terminos' },
+  ],
+};
+---
+
+<!-- Stat bar -->
+<div style="background:var(--color-primary)">
+  <div class="container py-5">
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center text-white">
+      {[
+        { value: '+500', label: 'Pedidos/día automatizados' },
+        { value: '0 errores', label: 'En toma de pedidos' },
+        { value: '< 1h', label: 'Tiempo de configuración' },
+        { value: '24/7', label: 'Atención automática' },
+      ].map(({ value, label }) => (
+        <div>
+          <p class="text-2xl font-black">{value}</p>
+          <p class="text-xs text-white/80 mt-0.5">{label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<footer style="background:var(--color-text); color:var(--color-text-inverse)">
+  <div class="container py-8 md:py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+      <!-- Brand -->
+      <div>
+        <a href="/" class="inline-flex items-center gap-2 mb-4">
+          <img src="/logo.svg" alt="" aria-hidden="true" class="h-8 w-8" width="32" height="32" />
+          <span class="font-bold text-xl">
+            Sincro<span style="color:var(--color-primary)">Chat</span>
+          </span>
+        </a>
+        <p class="text-sm text-white/60 max-w-xs leading-relaxed">
+          Automatización de pedidos por WhatsApp para restaurantes y negocios. Comisiones justas, sin el caos de los mensajes.
+        </p>
+      </div>
+
+      <!-- Links -->
+      {Object.entries(footerLinks).map(([section, links]) => (
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-white/40 mb-4">{section}</h3>
+          <ul class="space-y-2">
+            {links.map(({ label, href }) => (
+              <li>
+                <a
+                  href={href}
+                  class="text-sm text-white/70 hover:text-white transition-colors"
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-10 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/40">
+      <p>&copy; {currentYear} Sincro Chat. Todos los derechos reservados.</p>
+      <p>Hecho con ❤️ para restaurantes y negocios de América Latina</p>
+    </div>
+  </div>
+</footer>

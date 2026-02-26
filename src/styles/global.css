@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+/* ──────────────────────────────────────────
+   Design Tokens – Sincro Chat
+   ────────────────────────────────────────── */
+:root {
+  /* Brand colors */
+  --color-primary:       #00BE63;   /* Sincro Chat green – exact logo */
+  --color-primary-dark:  #009A50;
+  --color-primary-light: #D0F7E6;
+
+  --color-accent:        #FE904C;   /* Sincro Chat orange – exact logo */
+  --color-accent-dark:   #E87235;
+  --color-accent-light:  #FEE4D0;
+
+  /* Neutrals */
+  --color-surface:       #FFFFFF;
+  --color-surface-alt:   #F8FAFC;
+  --color-border:        #E2E8F0;
+
+  --color-text:          #0F172A;
+  --color-text-muted:    #64748B;
+  --color-text-inverse:  #FFFFFF;
+
+  /* Semantic */
+  --color-success:       #22C55E;
+  --color-warning:       #F59E0B;
+  --color-error:         #EF4444;
+
+  /* Spacing scale base */
+  --radius-sm:  0.375rem;
+  --radius-md:  0.75rem;
+  --radius-lg:  1.25rem;
+  --radius-xl:  2rem;
+
+  /* Shadows */
+  --shadow-sm:  0 1px 3px 0 rgb(0 0 0 / 0.08);
+  --shadow-md:  0 4px 16px 0 rgb(0 0 0 / 0.10);
+  --shadow-lg:  0 12px 40px 0 rgb(0 0 0 / 0.12);
+}
+
+/* ──────────────────────────────────────────
+   Base / Reset additions
+   ────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ──────────────────────────────────────────
+   Typography scale
+   ────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Sora', 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* ──────────────────────────────────────────
+   Utility helpers
+   ────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-inline: 2rem;
+  }
+}
+
+/* Focus visible – accesibilidad */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ──────────────────────────────────────────
+   Overflow – evitar scroll horizontal por blobs
+   ────────────────────────────────────────── */
+body {
+  overflow-x: hidden;
+}
+
+/* ──────────────────────────────────────────
+   Animations
+   ────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+.animate-fade-in-up-delay-1 {
+  animation: fadeInUp 0.6s 0.15s ease-out both;
+}
+
+.animate-fade-in-up-delay-2 {
+  animation: fadeInUp 0.6s 0.30s ease-out both;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}

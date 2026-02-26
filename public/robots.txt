@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sincrochat.com/sitemap-index.xml

@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import ContactForm from '../islands/ContactForm';
+
+const contactInfo = [
+  {
+    label: 'WhatsApp',
+    value: '+57 315 561 5323',
+    href: 'https://wa.me/573155615323',
+    description: 'La forma más rápida de hablar con nosotros.',
+  },
+  {
+    label: 'Email',
+    value: 'contacto@sincro.chat',
+    href: 'mailto:contacto@sincro.chat',
+    description: 'Para consultas formales o documentación.',
+  },
+] as const;
+---
+
+<BaseLayout
+  title="Contacto – Sincro Chat | Habla con nuestro equipo"
+  description="Contacta al equipo de Sincro Chat. Cuéntanos sobre tu negocio y te mostramos cómo automatizar tus pedidos de WhatsApp. Respuesta en menos de 24 horas."
+>
+  <Header />
+
+  <main>
+
+    <!-- ── Hero ── -->
+    <section class="bg-[--color-surface-alt] py-10 md:py-14 text-center">
+      <div class="container">
+        <h1 class="text-4xl md:text-5xl font-bold text-[--color-text] max-w-xl mx-auto leading-tight">
+          Hablemos sobre tu negocio
+        </h1>
+        <p class="mt-4 text-lg text-[--color-text-muted] max-w-lg mx-auto">
+          Cuéntanos cómo funciona y te mostramos cómo Sincro Chat puede automatizar tus pedidos de WhatsApp.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── Contenido ── -->
+    <section class="py-10 md:py-14">
+      <div class="container">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
+
+          <!-- Info lateral -->
+          <aside class="lg:col-span-2 space-y-8">
+            <div>
+              <h2 class="text-xl font-bold text-[--color-text] mb-4">¿Qué pasa después?</h2>
+              <ol class="space-y-4">
+                {[
+                  'Recibimos tu mensaje y lo revisamos.',
+                  'Te contactamos en menos de 24 horas por WhatsApp.',
+                  'Hacemos una llamada rápida para entender tu negocio.',
+                  'Te mostramos cómo quedaría el flujo configurado.',
+                ].map((step, i) => (
+                  <li class="flex gap-3 text-sm text-[--color-text-muted]">
+                    <span class="w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs text-white shrink-0 mt-0.5" style="background:var(--color-primary)">
+                      {i + 1}
+                    </span>
+                    {step}
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            <div class="space-y-4">
+              {contactInfo.map(({ label, value, href, description }) => (
+                <div class="p-4 rounded-xl bg-[--color-surface-alt] border border-[--color-border]">
+                  <p class="text-xs font-semibold uppercase tracking-wider text-[--color-text-muted] mb-1">{label}</p>
+                  <a href={href} class="font-semibold text-[--color-text] hover:text-[--color-primary] transition-colors block">{value}</a>
+                  <p class="text-xs text-[--color-text-muted] mt-1">{description}</p>
+                </div>
+              ))}
+            </div>
+          </aside>
+
+          <!-- Formulario -->
+          <div class="lg:col-span-3 bg-white rounded-2xl border border-[--color-border] shadow-sm p-8">
+            <h2 class="text-xl font-bold text-[--color-text] mb-6">Cuéntanos sobre tu negocio</h2>
+            <ContactForm client:visible />
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
