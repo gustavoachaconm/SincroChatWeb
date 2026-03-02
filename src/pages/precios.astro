@@ -30,7 +30,36 @@ const faqsPricing = [
 >
   <Header />
 
-  <main>
+  <!-- ── Banner: Página en construcción ── -->
+  <div class="w-full py-4 text-center text-white text-sm font-semibold" style="background:var(--color-accent)">
+    🚧 Estamos actualizando nuestros planes — próximamente nuevas opciones
+  </div>
+
+  <main class="relative">
+
+    <!-- Overlay en construcción -->
+    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6 py-20"
+      style="background: rgba(255,255,255,0.92); backdrop-filter: blur(6px)">
+      <div class="max-w-md mx-auto">
+        <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl" style="background:var(--color-primary-light)">
+          🚧
+        </div>
+        <h2 class="text-3xl font-bold text-[--color-text] mb-4">Precios en construcción</h2>
+        <p class="text-[--color-text-muted] leading-relaxed mb-8">
+          Estamos reestructurando nuestros planes para ofrecerte opciones aún mejores.
+          Vuelve pronto o contáctanos directamente para conocer las tarifas actuales.
+        </p>
+        <a
+          href="https://wa.me/573155615323?text=Hola%2C+quiero+saber+los+precios+de+Sincro+Chat"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-semibold transition-opacity hover:opacity-90"
+          style="background:var(--color-primary)"
+        >
+          Consultar precios por WhatsApp
+        </a>
+      </div>
+    </div>
 
     <!-- ── Hero ── -->
     <section class="relative overflow-hidden py-14 md:py-20 text-center" style="background: linear-gradient(160deg, #f0fff8 0%, #ffffff 55%, #fff8f3 100%)">
@@ -208,7 +237,7 @@ const faqsPricing = [
       </div>
     </section>
 
-  </main>
+  </main> <!-- fin relative -->
 
   <Footer />
 </BaseLayout>
